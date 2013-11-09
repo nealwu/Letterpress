@@ -55,21 +55,24 @@ bool compare(string word1, string word2) {
 
 int main(int argc, char **argv) {
     string enemy, neutral, mine, letters;
-    int args = argc - 1;
 
-    if (args == 1 || args == 4) {
-        ENEMY = atoi(argv[1]);
-        assert(ENEMY > 0);
-    }
-
-    if (args == 3 || args == 4) {
-        enemy = argv[argc - 3];
-        neutral = argv[argc - 2];
-        mine = argv[argc - 1];
-    } else {
-        getline(cin, enemy);
-        getline(cin, neutral);
-        getline(cin, mine);        
+    for (int arg = 1; arg < argc; arg++) {
+        if (strcmp(argv[arg], "--score") == 0) {
+            assert(arg + 1 < argc);
+            ENEMY = atoi(argv[arg + 1]);
+        } else if (strcmp(argv[arg], "--group1") == 0) {
+            if (arg + 1 < argc && argv[arg + 1][0] != '-') {
+                enemy = argv[arg + 1];
+            }
+        } else if (strcmp(argv[arg], "--group2") == 0) {
+            if (arg + 1 < argc && argv[arg + 1][0] != '-') {
+                neutral = argv[arg + 1];
+            }
+        } else if (strcmp(argv[arg], "--group3") == 0) {
+            if (arg + 1 < argc && argv[arg + 1][0] != '-') {
+                mine = argv[arg + 1];
+            }
+        }
     }
 
     letters = enemy + neutral + mine;

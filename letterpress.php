@@ -5,7 +5,7 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 $('#submit').click(function() {
-                    $('#wordlist').empty();
+                    $('#words').empty();
                     $.ajax({
                         url: 'solver.php',
                         cache: false,
@@ -15,11 +15,14 @@
                             group3: $('#group3').val()
                         },
                         success: function(result) {
+                            $('#words').append($('<h3>').text('Suggestions:'));
+                            $('#words').append($('<ul>').attr('id', 'wordlist'));
+
                             var mapping = JSON.parse(result);
 
                             for (var word in mapping) {
                                 var score = mapping[word];
-                                $('#wordlist').append('<li>' + word + ' ' + score + '</li>');
+                                $('#wordlist').append('<li>' + word + '</li>');
                             }
                         }
                     });
@@ -41,6 +44,6 @@
             <br>
             <input id="submit" type="submit" value="Submit">
         </div>
-        <ul id="wordlist"></ul>
+        <div id="words"></div>
     </body>
 </html>

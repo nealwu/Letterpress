@@ -7,7 +7,8 @@
     $group1 = $_GET['group1'];
     $group2 = $_GET['group2'];
     $group3 = $_GET['group3'];
-    system("./Letterpress $group1 $group2 $group3 > /dev/null");
+    $command = "./Letterpress --group1 $group1 --group2 $group2 --group3 $group3 > /dev/null";
+    system($command);
     $words = fopen('words.txt', 'r');
     $mapping = array();
 
