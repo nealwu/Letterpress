@@ -10,9 +10,9 @@
                         url: 'solver.php',
                         cache: false,
                         data: {
-                            group1: $('#group1').val(),
-                            group2: $('#group2').val(),
-                            group3: $('#group3').val()
+                            group1: $('#group1').val().toLowerCase(),
+                            group2: $('#group2').val().toLowerCase(),
+                            group3: $('#group3').val().toLowerCase()
                         },
                         success: function(result) {
                             var mapping = JSON.parse(result);
@@ -46,11 +46,11 @@
             <h3>HOWTO: Group 1 is the light red letters, Group 2 is the white letters, and Group 3 is everything else (the blue and dark red letters).</h3>
         </div>
         <div>
-            Group 1 <input id="group1">
+            Group 1 <input id="group1" value="LVIP">
             <br>
-            Group 2 <input id="group2">
+            Group 2 <input id="group2" value="OHAKKJ">
             <br>
-            Group 3 <input id="group3">
+            Group 3 <input id="group3" value="SOEONYDRTFRPYAR">
             <br>
             <input id="submit" type="submit" value="Submit">
         </div>
