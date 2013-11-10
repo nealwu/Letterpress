@@ -43,7 +43,7 @@
     <body>
         <img height="25%" src="letterpress.png"></img>
         <div>
-            <h3>HOWTO: Group 1 is the light red letters, Group 2 is the white letters, and Group 3 is everything else (the blue and dark red letters).</h3>
+            <h3>Group 1 is the light red letters.<br>Group 2 is the white letters.<br>Group 3 is everything else (the blue and dark red letters).</h3>
         </div>
         <div>
             Group 1 <input id="group1" value="LVIP">
