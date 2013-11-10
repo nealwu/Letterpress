@@ -36,6 +36,7 @@
     </head>
 
     <body>
+        <img height="25%" src="letterpress.png"></img>
         <div>
             <h3>HOWTO: Group 1 is the light red letters, Group 2 is the white letters, and Group 3 is everything else (the blue and dark red letters).</h3>
         </div>
