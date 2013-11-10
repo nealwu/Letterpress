@@ -25,7 +25,7 @@
 
                                 for (var word in mapping) {
                                     var score = mapping[word];
-                                    $('#wordlist').append('<tr><td><pre>' + word + '</pre></td><td>' + score + '</td></tr>');
+                                    $('#wordlist').append('<tr><td><pre>' + word.toUpperCase() + '</pre></td><td>' + score + '</td></tr>');
                                 }
                             }
                         }
@@ -33,6 +33,11 @@
                 });
             });
         </script>
+        <style type="text/css">
+            *:not(pre) {
+                font-family: "museo-sans-rounded","museo_sans_500regular",Arial,Helvetica,sans-serif;
+            }
+        </style>
     </head>
 
     <body>
@@ -41,11 +46,11 @@
             <h3>HOWTO: Group 1 is the light red letters, Group 2 is the white letters, and Group 3 is everything else (the blue and dark red letters).</h3>
         </div>
         <div>
-            Group 1: <input id="group1">
+            Group 1 <input id="group1">
             <br>
-            Group 2: <input id="group2">
+            Group 2 <input id="group2">
             <br>
-            Group 3: <input id="group3">
+            Group 3 <input id="group3">
             <br>
             <input id="submit" type="submit" value="Submit">
         </div>
