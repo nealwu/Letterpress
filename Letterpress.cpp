@@ -3,6 +3,8 @@
 #include <string>
 #include <cassert>
 #include <vector>
+#include <cstring>
+#include <algorithm>
 using namespace std;
 
 int ENEMY = 2;
@@ -59,7 +61,7 @@ int main(int argc, char **argv) {
     for (int arg = 1; arg < argc; arg++) {
         if (strcmp(argv[arg], "--score") == 0) {
             assert(arg + 1 < argc);
-            ENEMY = atoi(argv[arg + 1]);
+            sscanf(argv[arg + 1], "%d", &ENEMY);
         } else if (strcmp(argv[arg], "--group1") == 0) {
             if (arg + 1 < argc && argv[arg + 1][0] != '-') {
                 enemy = argv[arg + 1];
