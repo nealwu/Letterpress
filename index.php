@@ -21,7 +21,7 @@
                                 $('#words').append($('<h3>').text('Invalid!'));
                             } else {
                                 $('#words').append($('<table>').attr('id', 'wordlist'));
-                                $('#wordlist').append('<tr><th>Suggestion</th><th>Score</th></tr>');
+                                $('#wordlist').append('<tr><th>Suggestion</th><th>Score (2 * Group1 + Group2)</th></tr>');
 
                                 for (var word in mapping) {
                                     var score = mapping[word];
