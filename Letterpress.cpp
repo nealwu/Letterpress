@@ -9,7 +9,7 @@ using namespace std;
 
 int ENEMY = 2;
 const int NEUTRAL = 1, MINE = 0;
-const int DISPLAY = 25, OUTPUT = 100;
+const int DISPLAY = 25, OUTPUT = 500;
 const int CHARS = 128;
 
 int freq[CHARS], efreq[CHARS], nfreq[CHARS], mfreq[CHARS];
