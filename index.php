@@ -6,19 +6,40 @@
             $(document).ready(function() {
                 $('#submit').click(function() {
                     $('#words').empty();
+                    var group1 = $('#group1').val().toLowerCase();
+                    var group2 = $('#group2').val().toLowerCase();
+                    var group3 = $('#group3').val().toLowerCase();
+
                     $.ajax({
                         url: 'solver.php',
                         cache: false,
                         data: {
-                            group1: $('#group1').val().toLowerCase(),
-                            group2: $('#group2').val().toLowerCase(),
-                            group3: $('#group3').val().toLowerCase()
+                            group1: group1,
+                            group2: group2,
+                            group3: group3
                         },
                         success: function(result) {
                             var mapping = JSON.parse(result);
 
                             if (mapping.length == 0) {
                                 $('#words').append($('<h3>').text('Invalid!'));
+                                var fullString = group1 + group2 + group3;
+
+                                if (fullString.length !== 25) {
+                                    $('#words').append($('<h4>').text('You entered ' + fullString.length + ' characters, but there should be 25'));
+                                } else {
+                                    var illegalChar = null;
+
+                                    for (var i = 0; i < fullString.length; i++) {
+                                        if (fullString[i] < 'a' || fullString[i] > 'z') {
+                                            illegalChar = fullString[i];
+                                        }
+                                    }
+
+                                    if (illegalChar) {
+                                        $('#words').append($('<h4>').text(illegalChar + ' is not a valid character'));
+                                    }
+                                }
                             } else {
                                 $('#words').append($('<table>').attr('id', 'wordlist'));
                                 $('#wordlist').append('<tr><th>Suggestion</th><th>Score (2 * Group1 + Group2)</th></tr>');

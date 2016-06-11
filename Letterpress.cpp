@@ -83,6 +83,7 @@ int main(int argc, char **argv) {
     assert(letters.length() == 25);
 
     for (int i = 0; i < (int) letters.length(); i++) {
+        assert('a' <= letters[i] && letters[i] <= 'z');
         freq[(int) letters[i]]++;
     }
 
