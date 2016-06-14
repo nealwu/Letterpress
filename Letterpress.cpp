@@ -7,8 +7,7 @@
 #include <algorithm>
 using namespace std;
 
-int ENEMY = 2;
-const int NEUTRAL = 1, MINE = 0;
+int ENEMY = 2, NEUTRAL = 1, MINE = 0;
 const int DISPLAY = 25, OUTPUT = 500;
 const int CHARS = 128;
 
@@ -59,10 +58,7 @@ int main(int argc, char **argv) {
     string enemy, neutral, mine, letters;
 
     for (int arg = 1; arg < argc; arg++) {
-        if (strcmp(argv[arg], "--score") == 0) {
-            assert(arg + 1 < argc);
-            sscanf(argv[arg + 1], "%d", &ENEMY);
-        } else if (strcmp(argv[arg], "--group1") == 0) {
+        if (strcmp(argv[arg], "--group1") == 0) {
             if (arg + 1 < argc && argv[arg + 1][0] != '-') {
                 enemy = argv[arg + 1];
             }
@@ -73,6 +69,18 @@ int main(int argc, char **argv) {
         } else if (strcmp(argv[arg], "--group3") == 0) {
             if (arg + 1 < argc && argv[arg + 1][0] != '-') {
                 mine = argv[arg + 1];
+            }
+        } else if (strcmp(argv[arg], "--multiplier1") == 0) {
+            if (arg + 1 < argc && argv[arg + 1][0] != '-') {
+                sscanf(argv[arg + 1], "%d", &ENEMY);
+            }
+        } else if (strcmp(argv[arg], "--multiplier2") == 0) {
+            if (arg + 1 < argc && argv[arg + 1][0] != '-') {
+                sscanf(argv[arg + 1], "%d", &NEUTRAL);
+            }
+        } else if (strcmp(argv[arg], "--multiplier3") == 0) {
+            if (arg + 1 < argc && argv[arg + 1][0] != '-') {
+                sscanf(argv[arg + 1], "%d", &MINE);
             }
         }
     }
