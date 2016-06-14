@@ -10,13 +10,20 @@
                     var group2 = $('#group2').val().toLowerCase();
                     var group3 = $('#group3').val().toLowerCase();
 
+                    var multiplier1 = $('#multiplier1').val();
+                    var multiplier2 = $('#multiplier2').val();
+                    var multiplier3 = $('#multiplier3').val();
+
                     $.ajax({
                         url: 'solver.php',
                         cache: false,
                         data: {
                             group1: group1,
                             group2: group2,
-                            group3: group3
+                            group3: group3,
+                            multiplier1: multiplier1,
+                            multiplier2: multiplier2,
+                            multiplier3: multiplier3
                         },
                         success: function(result) {
                             var mapping = JSON.parse(result);
@@ -42,7 +49,7 @@
                                 }
                             } else {
                                 $('#words').append($('<table>').attr('id', 'wordlist'));
-                                $('#wordlist').append('<tr><th>Suggestion</th><th>Score (2 * Group1 + Group2)</th></tr>');
+                                $('#wordlist').append('<tr><th>Suggestion</th><th>Score (' + multiplier1 + ' * Group1 + ' + multiplier2 + ' * Group2 + ' + multiplier3 + ' * Group3)</th></tr>');
 
                                 for (var word in mapping) {
                                     var score = mapping[word];
@@ -56,7 +63,11 @@
         </script>
         <style type="text/css">
             *:not(pre) {
-                font-family: "museo-sans-rounded","museo_sans_500regular",Arial,Helvetica,sans-serif;
+                font-family: "museo-sans-rounded", "museo_sans_500regular", Arial, Helvetica, sans-serif;
+            }
+
+            .multiplier {
+                width: 25px;
             }
         </style>
     </head>
@@ -67,11 +78,11 @@
             <h3>Group 1 is the light red letters.<br>Group 2 is the white letters.<br>Group 3 is everything else (the blue and dark red letters).</h3>
         </div>
         <div>
-            Group 1 <input id="group1" placeholder="LVIP">
+            Group 1 <input id="group1" placeholder="LVIP"> x <input id="multiplier1" class="multiplier" maxlength="3" value="2">
             <br>
-            Group 2 <input id="group2" placeholder="OHAKKJ">
+            Group 2 <input id="group2" placeholder="OHAKKJ"> x <input id="multiplier2" class="multiplier" maxlength="3" value="1">
             <br>
-            Group 3 <input id="group3" placeholder="SOEONYDRTFRPYAR">
+            Group 3 <input id="group3" placeholder="SOEONYDRTFRPYAR"> x <input id="multiplier3" class="multiplier" maxlength="3" value="0">
             <br>
             <input id="submit" type="submit" value="Submit">
         </div>
